@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int score; // current score
+    private int life; // current life
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

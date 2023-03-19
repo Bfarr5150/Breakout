@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float ballSpeed;
+    private bool ballCollision = false;
+    private bool ballDeath = false;
 
     // Update is called once per frame
     void Update()
     {
         
     }
+
+
+
 }

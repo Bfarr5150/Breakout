@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Green
+  - Paddle
+  - Blue
+  - Purple
+  - Ball
+  - Red
+  - Highscore
+  - CurrentScore
   layers:
   - Default
   - TransparentFX
