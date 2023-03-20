@@ -8,9 +8,7 @@
     // Bounds
         bottom screenbounds --> (-12.1, -7, 0), (12.1, -7, 0)
             if BallGO passes this point --> lives--
-        left/right bounds --> -12.1x, 12.1x (need to see what to do to get entire y range value)
-            changes movement direction based on which side is hit
-            (maybe put scaled cube on left/right bounds w/ RigidBody?)
+        left/right bounds --> -12.1x, 12.1x (colliders for walls)
         top bounds --> N/A (will collide with object)
 
     // Bricks
@@ -30,6 +28,7 @@
             currentScore += 1.15k
         Red spawn @ 5.25 (y)
             currentScore += 2.5k
+        (make 
 
     // Ball spawn @ 0.25, -4.5, 0
 
