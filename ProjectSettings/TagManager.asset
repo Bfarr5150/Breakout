@@ -12,6 +12,7 @@ TagManager:
   - Red
   - Highscore
   - CurrentScore
+  - Bounds
   layers:
   - Default
   - TransparentFX

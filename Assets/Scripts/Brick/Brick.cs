@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    protected Color brickColor;
+    protected Material brickMaterial;
     protected float brickSpeed;
+    protected int brickScore;
 
-    // Start is called before the first frame update
-    void Start()
+    /*
+    public void SetBrickSpeed (float speed)
     {
-        
+        brickSpeed = speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetBrickScore (int score)
     {
-        
+        brickScore = score;
     }
+
+    public void SetBrickMaterial(Material brickMat)
+    {
+
+    }
+    */
+
 
     // Manipulate score in this/child scripts
     // score = score + point value of brick

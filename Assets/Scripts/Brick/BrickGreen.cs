@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrickGreen : MonoBehaviour
+public class BrickGreen : Brick
 {
-    // Start is called before the first frame update
+    [Header("Private brick speed variable")]
+    [SerializeField]
+    private float speed = 1.0f;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        brickMaterial = GetComponent<Renderer>().material;
+        brickSpeed = speed;
+        brickScore = 250;
     }
 }
