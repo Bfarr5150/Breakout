@@ -8,6 +8,8 @@ public class BrickGreen : Brick
     [SerializeField]
     private float speed = 1.0f;
 
+    public Material BrickGreenMat;
+
     void Start()
     {
         brickMaterial = GetComponent<Renderer>().material;
