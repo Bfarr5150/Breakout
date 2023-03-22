@@ -8,6 +8,7 @@ public class BrickGreen : Brick
     [SerializeField]
     private float speed = 1.0f;
 
+    // Ability to assign material to prefab in inspector
     public Material BrickGreenMat;
 
     void Start()

@@ -6,42 +6,59 @@ public class GameManager : MonoBehaviour
 {
     public PlayerData playerData;
 
+    // Spawn variables
+    public GameObject greenBrick;
+    public GameObject blueBrick;
+    public GameObject purpleBrick;
+    public GameObject redBrick;
+    public GameObject ball;
 
-    // set highscore once game ends (Use PlayerPrefs (look at guide that is
-        // in coding workspace in opera))
-    // respawn ball ==> if life = 0 --> if highscore < score ->
-        // -> highscore = score --> return highscore ==> switch
-        // scene to GameoverScene (SceneManager)
-    // switch to WinnerScene if score == 105k (SceneManager)
 
-    // Bounds
-        // bottom screenbounds --> (-12.1, -7, 0), (12.1, -7, 0)
-        // left/right bounds --> -12.1x, 12.1x (need to see what to
-            // do to get entire y range value)
-        // top bounds --> N/A (will collide with object)
+    void Start()
+    {
+        SpawnBricks();
 
-    // Bricks
-        // 12 bricks/row in increments of 2 units on x-axis (x = -12 to 12)
-            // row (y) increments = 0.75
-            // Brick totals: 24G, 24B, 24P, 12R
-            // Max score == 105k
-                // Green total == 5.4k (225/brick)
-                // Blue total == 12k (500/brick)
-                // Purple total == 27.6k (1.15k/brick)
-                // Red total == 60k (2.5k/brick)
-        // Green spawn @ 0.75 && 1.5 (y)
-            // currentScore += 225
-        // Blue spawn @ 2.25 && 3.0 (y)
-            // currentScore += 500
-        // Purple spawn @ 3.75 && 4.5 (y)
-            // currentScore += 1.15k
-        // Red spawn @ 5.25 (y)
-            // currentScore += 2.5k
 
-    // Ball spawn @ 0.25, -4.5, 0
+    }
 
-    // EXTRAS (if have time after everything else is done)
-        // for last life, if life == 1 blink all text black-to-red three times
-            // when a life is lost, blink life number text black-to-red one time
+    void Update()
+    {
+        
+    }
+
+
+    // Spawn Bricks
+    void SpawnBricks()
+    {
+        int brickCount = 13;
+        Vector3 greenSpawnPos = greenBrick.transform.position;
+        Vector3 blueSpawnPos = blueBrick.transform.position;
+        Vector3 purpleSpawnPos = purpleBrick.transform.position;
+        Vector3 redSpawnPos = redBrick.transform.position;
+
+        for (int i = 0; i < brickCount; i++)
+        {
+            // Instantiate brick objects
+            GameObject spawnedBrickR1 = Instantiate(greenBrick, greenSpawnPos + new Vector3(i * 2, greenSpawnPos.y - 0.75f, 0), Quaternion.identity);
+            GameObject spawnedBrickR2 = Instantiate(greenBrick, greenSpawnPos + new Vector3(i * 2, greenSpawnPos.y, 0), Quaternion.identity);
+            GameObject spawnedBrickR3 = Instantiate(blueBrick, greenSpawnPos + new Vector3(i * 2, blueSpawnPos.y - 0.75f, 0), Quaternion.identity);
+            GameObject spawnedBrickR4 = Instantiate(blueBrick, greenSpawnPos + new Vector3(i * 2, blueSpawnPos.y, 0), Quaternion.identity);
+            GameObject spawnedBrickR5 = Instantiate(purpleBrick, greenSpawnPos + new Vector3(i * 2, purpleSpawnPos.y - 0.75f, 0), Quaternion.identity);
+            GameObject spawnedBrickR6 = Instantiate(purpleBrick, greenSpawnPos + new Vector3(i * 2, purpleSpawnPos.y, 0), Quaternion.identity);
+            GameObject spawnedBrickR7 = Instantiate(redBrick, greenSpawnPos + new Vector3(i * 2, redSpawnPos.y - 0.75f, 0), Quaternion.identity);
+
+            // Set parent transform to keep hierarchy clean
+            spawnedBrickR1.transform.parent = transform;
+            spawnedBrickR2.transform.parent = transform;
+            spawnedBrickR3.transform.parent = transform;
+            spawnedBrickR4.transform.parent = transform;
+            spawnedBrickR5.transform.parent = transform;
+            spawnedBrickR6.transform.parent = transform;
+            spawnedBrickR7.transform.parent = transform;
+        }
+    }
+
+
+
 
 }

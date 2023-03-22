@@ -3,7 +3,13 @@ guid: 802b786ace5179444bfc52cfe783bc44
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerData: {instanceID: 0}
+  - greenBrick: {fileID: 2225633440584818646, guid: d5ae8d308fd5406419d72d72da89c6d8, type: 3}
+  - blueBrick: {fileID: 2225633440584818646, guid: d5ae8d308fd5406419d72d72da89c6d8, type: 3}
+  - purpleBrick: {fileID: 2423885002041468140, guid: 7ca5a1a07c3ce474f9a77c64034a73ba, type: 3}
+  - redBrick: {instanceID: 0}
+  - ball: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
