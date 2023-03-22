@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public GameObject ball;
     private bool ballCollision = false;
     private bool ballDeath = false;
 
@@ -16,6 +17,19 @@ public class Ball : MonoBehaviour
     {
         
     }
+
+
+    // Ball death check
+    bool BallDeathCheck()
+    {
+        if (ball.transform.position.y < -7)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 

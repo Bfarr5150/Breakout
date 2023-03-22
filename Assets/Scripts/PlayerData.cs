@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private int score; // current score
-    private int life; // current life
+    public int score;
+    public int life;
 
+    private void Start()
+    {
+        score = 0;
+        life = 0;
+    }
 }

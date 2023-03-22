@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,18 +13,26 @@ public class GameManager : MonoBehaviour
     public GameObject purpleBrick;
     public GameObject redBrick;
     public GameObject ball;
+    public GameObject paddle;
+
+    public TextMeshProUGUI gameOverScore;
+    public GameObject gameOverOverlay;
+
+    // DEBUGGING
 
 
     void Start()
     {
         SpawnBricks();
-
+        SpawnBall();
+        SpawnPaddle();
+        
 
     }
 
     void Update()
     {
-        
+        //GameOver();
     }
 
 
@@ -58,6 +67,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+    // Spawn Ball
+    void SpawnBall()
+    {
+        Vector3 ballPos = ball.transform.position;
+        GameObject spawnedBall = Instantiate(ball, ballPos, Quaternion.identity);
+    }
+
+
+    // Spawn Paddle
+    void SpawnPaddle()
+    {
+        Vector3 paddlePos = paddle.transform.position;
+        GameObject paddleSpawn = Instantiate(paddle, paddlePos, Quaternion.identity);
+    }
+
+    public void GameOver()
+    {
+        /*
+        if (playerData.life == 0)
+        {
+            gameOverOverlay.SetActive(true);
+            gameOverScore.text = "Score: " + playerData.score;
+        }
+        */
+        gameOverOverlay.SetActive(true);
+        gameOverScore.text = "Score: " + playerData.score;
+
+    }
 
 
 
