@@ -5,34 +5,39 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // Script dependencies
     public PlayerData playerData;
+    //private Ball ball;
 
     // Spawn variables
     public GameObject greenBrick;
     public GameObject blueBrick;
     public GameObject purpleBrick;
     public GameObject redBrick;
-    public GameObject ball;
+    public GameObject ballObj;
     public GameObject paddle;
+    public GameObject topBound;
 
+    // Respawned ball position
+    public Vector3 resetBallPos;
+
+    // Game Over variables
     public TextMeshProUGUI gameOverScore;
     public GameObject gameOverOverlay;
-
-    // DEBUGGING
-
 
     void Start()
     {
         SpawnBricks();
         SpawnBall();
         SpawnPaddle();
-        
+        SpawnTopBound();
+        Debug.Log("Lives = " + playerData.life);
 
     }
 
     void Update()
     {
-        //GameOver();
+        GameOver();
     }
 
 
@@ -71,8 +76,10 @@ public class GameManager : MonoBehaviour
     // Spawn Ball
     void SpawnBall()
     {
-        Vector3 ballPos = ball.transform.position;
-        GameObject spawnedBall = Instantiate(ball, ballPos, Quaternion.identity);
+        ballObj.SetActive(true);
+        Vector3 ballPos = ballObj.transform.position;
+        resetBallPos = ballPos;
+        GameObject spawnedBall = Instantiate(ballObj, ballPos, Quaternion.identity);
     }
 
 
@@ -83,18 +90,64 @@ public class GameManager : MonoBehaviour
         GameObject paddleSpawn = Instantiate(paddle, paddlePos, Quaternion.identity);
     }
 
+
+    // Spawn top bound object
+    void SpawnTopBound()
+    {
+        Vector3 topBoundPos = topBound.transform.position;
+        GameObject spawnTopBound = Instantiate(topBound, topBoundPos, Quaternion.identity);
+    }
+
+
+
+    // Activate GameOver scene
+        // After getting ball movement working,
+        // see if ballObj.SetActive(false) will
+        // work by --> if gameOverOverlay is true,
+        // then disable
     public void GameOver()
     {
-        /*
         if (playerData.life == 0)
         {
             gameOverOverlay.SetActive(true);
             gameOverScore.text = "Score: " + playerData.score;
+            //ballObj.SetActive(false);
         }
-        */
-        gameOverOverlay.SetActive(true);
-        gameOverScore.text = "Score: " + playerData.score;
+    }
 
+
+    // Respawn ball Coroutine
+    public IEnumerator ResetBallTimer()
+    {
+        ballObj.SetActive(false);
+        yield return new WaitForSeconds(4.0f);
+        ballObj.SetActive(true);
+        InitialSpeed();
+        Debug.Log("Started Coroutine");
+    }
+
+
+    // Reset ball on death with Coroutine
+    public void ResetBall()
+    {
+        StartCoroutine(ResetBallTimer());
+    }
+
+    // Disable ball at end of scene (applied in Ball script)
+        // Couldn't get this to work
+    public void DisableBall()
+    {
+        ballObj.SetActive(false);
+        Debug.Log("Ball disabled");
+    }
+
+
+    // Get inital speed for respawning
+    public void InitialSpeed()
+    {
+        Ball ball = ballObj.GetComponent<Ball>();
+        float initialSpeed = ball.speed;
+        ball.speed = initialSpeed;
     }
 
 

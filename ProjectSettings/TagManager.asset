@@ -12,7 +12,11 @@ TagManager:
   - Red
   - Highscore
   - CurrentScore
-  - Bounds
+  - LeftBound
+  - RightBound
+  - TopBound
+  - GameManager
+  - PlayerData
   layers:
   - Default
   - TransparentFX

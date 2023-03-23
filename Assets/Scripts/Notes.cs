@@ -35,4 +35,18 @@
     // EXTRAS (if have time after everything else is done)
         for last life, if lives == 1 blink all "life" text black-to-red three times
         when a life is lost, blink all "life" text black-to-red one time
+
+
+- TO-DO'S BEFORE TURNING IN:
+    -- Remove functions:
+        - LifeTest() --> GameManager/PlayerData
+    
+    -- Commented out variables
+        - GameManager
+        - 
+
+
+
+
+
 */

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class BrickBlue : Brick
 {
-    [Header("Private brick speed variable")]
-    [SerializeField]
-    private float speed = 2.0f;
+    public float speed = 2.5f;
 
     public Material brickBlueMat;
 

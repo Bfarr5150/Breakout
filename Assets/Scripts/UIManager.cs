@@ -5,6 +5,5 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public PlayerData playerData;
-    
 
 }

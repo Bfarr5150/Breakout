@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class BrickGreen : Brick
 {
-    [Header("Private brick speed variable")]
-    [SerializeField]
-    private float speed = 1.0f;
+    public float speed = 3f;
 
     // Ability to assign material to prefab in inspector
     public Material BrickGreenMat;
