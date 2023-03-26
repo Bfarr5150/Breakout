@@ -6,7 +6,7 @@ public class BrickRed : Brick
 {
     [Header("Private brick speed variable")]
     [SerializeField]
-    private float speed = 4.0f;
+    public float speed = 4.0f;
 
     public Material brickRedMat;
 

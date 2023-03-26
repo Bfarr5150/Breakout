@@ -15,10 +15,10 @@ public class Ball : MonoBehaviour
     Vector3 moveVector = new Vector3(0, 1, 0);
 
     // Brick variables
-    public GameObject[] greenBricks;
-    public GameObject[] blueBricks;
-    public GameObject[] purpleBricks;
-    public GameObject[] redBricks;
+    public GameObject[] greenBricksList;
+    public GameObject[] blueBricksList;
+    public GameObject[] purpleBricksList;
+    public GameObject[] redBricksList;
 
 
     void Start()
@@ -32,13 +32,16 @@ public class Ball : MonoBehaviour
         playerData = playerDataObj.GetComponent<PlayerData>();
 
         // Create array of all bricks tagged "Green"
-        greenBricks = GameObject.FindGameObjectsWithTag("Green");
+        greenBricksList = GameObject.FindGameObjectsWithTag("Green");
 
         // Create array of all bricks tagged "Blue"
-        blueBricks = GameObject.FindGameObjectsWithTag("Blue");
+        blueBricksList = GameObject.FindGameObjectsWithTag("Blue");
 
         // Create array of all bricks tagged "Purple"
-        blueBricks = GameObject.FindGameObjectsWithTag("Purple");
+        purpleBricksList = GameObject.FindGameObjectsWithTag("Purple");
+
+        // Create array of all bricks tagged "Red"
+        redBricksList = GameObject.FindGameObjectsWithTag("Red");
 
     }
 
@@ -69,26 +72,11 @@ public class Ball : MonoBehaviour
             {
                 this.transform.position = gameManager.resetBallPos;
                 gameManager.ResetBall();
-                speed = 3f;
+                speed = 1f;
                 playerData.life--;
             }
         }
-    }
-
-
-    /* 
-     // Disable ball if life == 0
-     // Didn't end up working
-     
-    void DisableBallObj()
-    {
-        if (playerData.life < 1)
-        {
-            gameManager.DisableBall();
-        }
-    }
-    */
-    
+    }    
 
 
     // Move ball in set direction
@@ -102,10 +90,11 @@ public class Ball : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         // Check if collision was with a greenBrick
-        foreach (GameObject greenBricks in greenBricks)
+        foreach (GameObject greenBricks in greenBricksList)
         {
             if (collision.gameObject == greenBricks)
             {
+                playerData.score += 225;
                 BrickGreen brickGreen = greenBricks.GetComponent<BrickGreen>();
                 float greenBrickSpeed = brickGreen.speed;
                 speed = greenBrickSpeed;
@@ -116,10 +105,12 @@ public class Ball : MonoBehaviour
         }
 
         // Check if collision was with a blueBrick
-        foreach (GameObject blueBricks in blueBricks)
+        foreach (GameObject blueBricks in blueBricksList)
         {
             if (collision.gameObject == blueBricks)
             {
+                //500
+                playerData.score += 500;
                 BrickBlue brickBlue = blueBricks.GetComponent<BrickBlue>();
                 float blueBrickSpeed = brickBlue.speed;
                 speed = blueBrickSpeed;
@@ -130,15 +121,32 @@ public class Ball : MonoBehaviour
         }
 
         // Check if collision was with a purpleBrick
-        foreach (GameObject purpleBricks in purpleBricks)
+        foreach (GameObject purpleBricks in purpleBricksList)
         {
             if (collision.gameObject == purpleBricks)
             {
+                //1.15k
+                playerData.score += 1150;
                 BrickPurple brickPurple = purpleBricks.GetComponent<BrickPurple>();
                 float purpleBrickSpeed = brickPurple.speed;
                 speed = purpleBrickSpeed;
                 moveVector = new Vector3(moveVector.x, -moveVector.y, 0);
                 purpleBricks.SetActive(false);
+                break;
+            }
+        }
+
+        // Check if collision was with a redBrick
+        foreach (GameObject redBricks in redBricksList)
+        {
+            if (collision.gameObject == redBricks)
+            {
+                //2.5k
+                BrickRed brickRed = redBricks.GetComponent<BrickRed>();
+                float redBrickSpeed = brickRed.speed;
+                speed = redBrickSpeed;
+                moveVector = new Vector3(moveVector.x, -moveVector.y, 0);
+                redBricks.SetActive(false);
                 break;
             }
         }
@@ -155,6 +163,12 @@ public class Ball : MonoBehaviour
 
         // Check collision with Paddle
         if (collision.gameObject.CompareTag("Paddle"))
+        {
+            moveVector = new Vector3(moveVector.x, -moveVector.y, 0);
+        }
+
+        // Check collision with Top Bounds
+        if (collision.gameObject.CompareTag("TopBound"))
         {
             moveVector = new Vector3(moveVector.x, -moveVector.y, 0);
         }

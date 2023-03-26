@@ -5,10 +5,9 @@ using UnityEngine;
 public class BrickBlue : Brick
 {
     public float speed = 2.5f;
-
     public Material brickBlueMat;
 
-    void Start()
+    private void Start()
     {
         brickMaterial = GetComponent<Renderer>().material;
         brickSpeed = speed;
