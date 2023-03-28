@@ -10,7 +10,7 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        score = 5100;
+        //score;
         life = 3;
     }
 

@@ -128,7 +128,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   playerData: {fileID: 0}
   speed: 1
-  greenBricks: []
-  blueBricks: []
-  purpleBricks: []
-  redBricks: []
+  greenBricksList: []
+  blueBricksList: []
+  purpleBricksList: []
+  redBricksList: []

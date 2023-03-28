@@ -149,7 +149,4 @@ public class GameManager : MonoBehaviour
         float initialSpeed = ball.speed;
         ball.speed = initialSpeed;
     }
-
-
-
 }
