@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float paddleSpeed = 3f;
 
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    // Input.GetAxis("Horizontal") * paddleSpeed * Time.deltaTime;
 }

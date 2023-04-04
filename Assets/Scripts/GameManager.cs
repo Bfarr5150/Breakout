@@ -149,4 +149,11 @@ public class GameManager : MonoBehaviour
         float initialSpeed = ball.speed;
         ball.speed = initialSpeed;
     }
+
+
+    // Reset paddle position
+    void ResetPaddle()
+    {
+
+    }
 }
